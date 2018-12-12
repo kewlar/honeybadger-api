@@ -34,6 +34,10 @@ module Honeybadger
         @payload = opts
       end
 
+      def ==(other)
+        payload == other.payload
+      end
+
       # Public: Whether tha fault has been marked as ignored.
       def ignored?
         @ignored == true

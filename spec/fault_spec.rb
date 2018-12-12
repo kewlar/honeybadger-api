@@ -76,6 +76,15 @@ describe Honeybadger::Api::Fault do
     end
   end
 
+  describe 'a fault' do
+    it 'is equal to another fault with the same attributes' do
+      @fault1 = FactoryGirl.build(:fault)
+      @fault2 = FactoryGirl.build(:fault)
+
+      expect(@fault1).to eq(@fault2)
+    end
+  end
+
   describe "an ignored fault" do
     before :each do
       @fault = FactoryGirl.build :ignored_fault
