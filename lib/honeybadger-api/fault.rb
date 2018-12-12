@@ -4,7 +4,7 @@ module Honeybadger
 
       attr_reader :id, :project_id, :klass, :action, :component, :message,
         :environment, :notices_count, :comments_count, :last_notice_at, :created_at,
-        :url, :assignee, :tags, :deploy
+        :url, :assignee, :tags, :deploy, :payload
 
       # Public: Build a new instance of Fault
       #
@@ -31,6 +31,7 @@ module Honeybadger
         end
         @tags = opts[:tags]
         @deploy = Deploy.new(opts[:deploy]) unless opts[:deploy].nil?
+        @payload = opts
       end
 
       # Public: Whether tha fault has been marked as ignored.

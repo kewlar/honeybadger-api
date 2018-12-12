@@ -66,6 +66,14 @@ describe Honeybadger::Api::Fault do
     it "should have a deploy object" do
       expect(@fault.deploy).to_not be_nil
     end
+
+    it "should have the original payload" do
+      payload = FactoryGirl.attributes_for(:fault).tap do |fault|
+        fault[:deploy] = FactoryGirl.attributes_for :deploy
+      end
+
+      expect(@fault.payload).to eq(payload)
+    end
   end
 
   describe "an ignored fault" do
