@@ -91,6 +91,13 @@ describe Honeybadger::Api::Fault do
       expect(@fault1).to eq(@fault2)
     end
 
+    it 'is does not care if deeply nested keys are strings or symbols' do
+      @fault1 = Honeybadger::Api::Fault.new(foo: { bar: 'baz' })
+      @fault2 = Honeybadger::Api::Fault.new('foo' => { 'bar' => 'baz' })
+
+      expect(@fault1).to eq(@fault2)
+    end
+
     it 'is not equal to a fault with different attributes' do
       @fault1 = FactoryGirl.build(:fault)
       @fault2 = FactoryGirl.build(:fault, last_notice_at: "2012-01-02T00:02:00Z")
