@@ -11,6 +11,7 @@ module Honeybadger
       #
       # Returns a new Notice
       def initialize(opts)
+        opts.symbolize_keys!
         @id = opts[:id]
         @url = opts[:url]
         @fault_id = opts[:fault_id]

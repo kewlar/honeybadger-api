@@ -12,6 +12,7 @@ module Honeybadger
       #
       # Returns a new Fault
       def initialize(opts)
+        opts.symbolize_keys!
         @id = opts[:id]
         @project_id = opts[:project_id]
         @klass = opts[:klass]
