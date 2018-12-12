@@ -27,7 +27,7 @@ module Honeybadger
       end
 
       def ==(other)
-        payload == other.payload
+        self.class == other.class && payload == other.payload
       end
 
       # Public: Find all notices on a fault for a project.

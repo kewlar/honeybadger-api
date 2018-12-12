@@ -100,6 +100,12 @@ describe Honeybadger::Api::Notice do
 
       expect(@notice1).to_not eq(@notice2)
     end
+
+    it 'is not equal to nil' do
+      @notice = FactoryGirl.build(:notice)
+
+      expect(@notice).to_not eq(nil)
+    end
   end
 
   describe "all" do

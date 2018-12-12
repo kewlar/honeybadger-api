@@ -90,6 +90,12 @@ describe Honeybadger::Api::Fault do
 
       expect(@fault1).to_not eq(@fault2)
     end
+
+    it 'is not equal to nil' do
+      @fault = FactoryGirl.build(:fault)
+
+      expect(@fault).to_not eq(nil)
+    end
   end
 
   describe "an ignored fault" do

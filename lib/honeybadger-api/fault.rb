@@ -35,7 +35,7 @@ module Honeybadger
       end
 
       def ==(other)
-        payload == other.payload
+        self.class == other.class && payload == other.payload
       end
 
       # Public: Whether tha fault has been marked as ignored.
