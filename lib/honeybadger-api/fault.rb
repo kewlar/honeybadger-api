@@ -39,6 +39,10 @@ module Honeybadger
         self.class == other.class && payload == other.payload
       end
 
+      def as_json
+        @payload
+      end
+
       # Public: Whether tha fault has been marked as ignored.
       def ignored?
         @ignored == true

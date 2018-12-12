@@ -122,6 +122,17 @@ describe Honeybadger::Api::Notice do
     end
   end
 
+  describe 'as_json' do
+    it 'exports the original payload' do
+      payload = FactoryGirl.attributes_for(:notice).tap do |notice|
+        notice[:deploy] = FactoryGirl.attributes_for :deploy
+      end
+
+      notice = Honeybadger::Api::Notice.new(payload)
+      expect(notice.as_json).to eq(payload)
+    end
+  end
+
   describe "all" do
     before :each do
       @project_id = 1

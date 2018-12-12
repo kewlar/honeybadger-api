@@ -112,6 +112,17 @@ describe Honeybadger::Api::Fault do
     end
   end
 
+  describe 'as_json' do
+    it 'exports the original payload' do
+      payload = FactoryGirl.attributes_for(:fault).tap do |fault|
+        fault[:deploy] = FactoryGirl.attributes_for :deploy
+      end
+
+      fault = Honeybadger::Api::Fault.new(payload)
+      expect(fault.as_json).to eq(payload)
+    end
+  end
+
   describe "an ignored fault" do
     before :each do
       @fault = FactoryGirl.build :ignored_fault
