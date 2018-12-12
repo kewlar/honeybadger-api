@@ -76,6 +76,14 @@ describe Honeybadger::Api::Notice do
     it "should have a created_at" do
       expect(@notice.created_at).to eql(DateTime.parse("2012-01-01T00:01:00Z"))
     end
+
+    it "should have the original payload" do
+      payload = FactoryGirl.attributes_for(:notice).tap do |notice|
+        notice[:deploy] = FactoryGirl.attributes_for :deploy
+      end
+
+      expect(@notice.payload).to eq(payload)
+    end
   end
 
   describe "all" do

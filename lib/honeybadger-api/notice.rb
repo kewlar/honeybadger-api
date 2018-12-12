@@ -3,7 +3,7 @@ module Honeybadger
     class Notice
 
       attr_reader :id, :url, :fault_id, :environment, :environment_name, :cookies, :message,
-       :request, :created_at, :web_environment, :backtrace, :deploy
+       :request, :created_at, :web_environment, :backtrace, :deploy, :payload
 
       # Public: Build a new instance of Notice
       #
@@ -23,6 +23,7 @@ module Honeybadger
         @message = opts[:message]
         @request = opts[:request]
         @created_at = opts[:created_at].nil? ? nil : DateTime.parse(opts[:created_at])
+        @payload = opts
       end
 
       # Public: Find all notices on a fault for a project.
