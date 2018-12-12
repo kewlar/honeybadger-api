@@ -24,4 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "mocha", "1.2.1"
   spec.add_development_dependency "factory_girl", "4.7.0"
   spec.add_development_dependency "activesupport", "4.2.6"
+  spec.add_development_dependency "guard", "~> 2.15"
+  spec.add_development_dependency "guard-rspec", "~> 4.7"
 end
