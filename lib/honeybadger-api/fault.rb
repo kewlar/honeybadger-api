@@ -50,6 +50,12 @@ module Honeybadger
         Honeybadger::Api::Request.all(path, handler)
       end
 
+      # Public: Find all faults for a given project that match a query.
+      def self.search(project_id, query)
+        path  = "projects/#{project_id}/faults"
+        Honeybadger::Api::Request.new(path, handler, query).all
+      end
+
       # Public: Paginate all faults for a given project.
       def self.paginate(project_id, filters = {})
         path  = "projects/#{project_id}/faults"

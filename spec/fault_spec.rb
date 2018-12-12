@@ -138,6 +138,23 @@ describe Honeybadger::Api::Fault do
     end
   end
 
+  describe "search" do
+    before :each do
+      @project_id = 1
+      @query = { q: 'FooError' }
+      @path = "projects/#{@project_id}/faults"
+      @handler = Proc.new { |response| Fault.new(response) }
+      Honeybadger::Api::Fault.expects(:handler).returns(@handler)
+    end
+
+    it "should find faults matching the query" do
+      @request = stub
+      @request.expects(:all).once
+      Honeybadger::Api::Request.expects(:new).with(@path, @handler, @query).returns(@request).once
+      Honeybadger::Api::Fault.search(@project_id, @query)
+    end
+  end
+
   describe "paginate" do
     before :each do
       @project_id = 1
