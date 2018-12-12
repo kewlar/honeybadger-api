@@ -26,6 +26,10 @@ module Honeybadger
         @payload = opts
       end
 
+      def ==(other)
+        payload == other.payload
+      end
+
       # Public: Find all notices on a fault for a project.
       def self.all(project_id, fault_id)
         path = "projects/#{project_id}/faults/#{fault_id}/notices"

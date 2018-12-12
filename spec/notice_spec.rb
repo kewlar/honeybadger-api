@@ -86,6 +86,15 @@ describe Honeybadger::Api::Notice do
     end
   end
 
+  describe 'a notice' do
+    it 'is equal to another notice with the same attributes' do
+      @notice1 = FactoryGirl.build(:notice)
+      @notice2 = FactoryGirl.build(:notice)
+
+      expect(@notice1).to eq(@notice2)
+    end
+  end
+
   describe "all" do
     before :each do
       @project_id = 1
