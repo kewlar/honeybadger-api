@@ -93,6 +93,13 @@ describe Honeybadger::Api::Notice do
 
       expect(@notice1).to eq(@notice2)
     end
+
+    it 'is not equal to a notice with different attributes' do
+      @notice1 = FactoryGirl.build(:notice)
+      @notice2 = FactoryGirl.build(:notice, created_at: "2012-01-02T00:02:00Z")
+
+      expect(@notice1).to_not eq(@notice2)
+    end
   end
 
   describe "all" do

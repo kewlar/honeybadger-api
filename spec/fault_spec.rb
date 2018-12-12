@@ -83,6 +83,13 @@ describe Honeybadger::Api::Fault do
 
       expect(@fault1).to eq(@fault2)
     end
+
+    it 'is not equal to a fault with different attributes' do
+      @fault1 = FactoryGirl.build(:fault)
+      @fault2 = FactoryGirl.build(:fault, last_notice_at: "2012-01-02T00:02:00Z")
+
+      expect(@fault1).to_not eq(@fault2)
+    end
   end
 
   describe "an ignored fault" do
